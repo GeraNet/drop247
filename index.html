@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101114" />
+  <meta name="description" content="Дроп24/7 — онлайн-магазин стильних знахідок. Скоро відкриття." />
+  <title>Дроп24/7 — скоро відкриття</title>
+  <style>
+    :root {
+      --bg: #101114;
+      --panel: #191b20;
+      --panel-2: #20232a;
+      --text: #f6f7f8;
+      --muted: #a3a7b0;
+      --accent: #c8ff5a;
+      --line: rgba(255,255,255,.09);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    header {
+      height: 82px; display: flex; align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 850; font-size: 21px; letter-spacing: -.8px; }
+    .logo-mark {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      color: #111; background: var(--accent); border-radius: 11px; font-weight: 950;
+    }
+    .logo span:last-child { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 0 20px; border-radius: 13px;
+      background: var(--accent); color: #111; font-weight: 800; font-size: 14px;
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .nav-cta:hover, .button:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .hero { padding: 88px 0 76px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 52px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; padding: 8px 12px;
+      color: var(--accent); background: rgba(200,255,90,.08);
+      border: 1px solid rgba(200,255,90,.18); border-radius: 999px;
+      font-size: 12px; font-weight: 800; letter-spacing: 1.1px; text-transform: uppercase;
+    }
+    .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+    h1 { margin: 22px 0 18px; font-size: clamp(46px, 6vw, 76px); line-height: .99; letter-spacing: -4px; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .lead { max-width: 520px; color: var(--muted); font-size: 18px; line-height: 1.7; }
+    .hero-actions { display: flex; align-items: center; gap: 18px; margin-top: 30px; flex-wrap: wrap; }
+    .text-link { color: var(--muted); font-size: 14px; }
+    .text-link:hover { color: var(--accent); }
+    .visual {
+      min-height: 430px; position: relative; display: grid; place-items: center;
+      border: 1px solid var(--line); border-radius: 32px;
+      background: radial-gradient(circle at 50% 45%, rgba(200,255,90,.14), transparent 48%), linear-gradient(145deg, #22252c, #15171b 68%);
+      overflow: hidden;
+    }
+    .visual::before, .visual::after {
+      content: ""; position: absolute; border: 1px solid rgba(200,255,90,.17); border-radius: 50%;
+      width: 330px; height: 330px;
+    }
+    .visual::after { width: 430px; height: 430px; border-color: rgba(255,255,255,.06); }
+    .orbit-label {
+      position: absolute; z-index: 2; top: 28px; right: 28px;
+      color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .big-mark {
+      z-index: 1; width: 220px; height: 220px; display: grid; place-items: center;
+      border-radius: 54px; background: var(--accent); color: #111;
+      font-size: 78px; font-weight: 950; letter-spacing: -8px;
+      transform: rotate(-8deg); box-shadow: 0 28px 90px rgba(200,255,90,.18);
+    }
+    .floating {
+      position: absolute; z-index: 3; padding: 12px 16px; border-radius: 14px;
+      background: rgba(30,32,38,.92); border: 1px solid var(--line);
+      font-size: 13px; font-weight: 750; box-shadow: 0 12px 35px rgba(0,0,0,.25);
+    }
+    .floating.one { left: 24px; bottom: 70px; transform: rotate(-5deg); }
+    .floating.two { right: 22px; bottom: 115px; transform: rotate(5deg); color: var(--accent); }
+    .section { padding: 26px 0 92px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 25px; }
+    .section h2 { margin: 0; font-size: clamp(27px, 4vw, 38px); letter-spacing: -1.5px; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 14px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature {
+      padding: 25px; min-height: 170px; border-radius: 20px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .icon {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 13px; background: rgba(200,255,90,.1); color: var(--accent);
+      font-size: 20px; margin-bottom: 18px;
+    }
+    .feature h3 { margin: 0 0 7px; font-size: 17px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .coming {
+      margin: 0 0 90px; padding: 42px; display: flex; align-items: center;
+      justify-content: space-between; gap: 30px; border-radius: 26px;
+      background: linear-gradient(110deg, rgba(200,255,90,.13), rgba(200,255,90,.025));
+      border: 1px solid rgba(200,255,90,.18);
+    }
+    .coming h2 { margin: 0 0 8px; font-size: 30px; letter-spacing: -1px; }
+    .coming p { margin: 0; color: var(--muted); }
+    .tag { color: var(--accent); font-weight: 850; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; white-space: nowrap; }
+    footer { border-top: 1px solid var(--line); padding: 26px 0; color: var(--muted); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-inner strong { color: var(--text); }
+
+    .product-card {
+      display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px;
+      padding: 22px; border-radius: 26px; background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    .product-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+    .product-gallery img { width: 100%; height: 100%; min-height: 270px; object-fit: cover; border-radius: 17px; background: var(--panel-2); }
+    .product-main { grid-column: 1 / -1; max-height: 440px; }
+    .product-secondary { max-height: 220px; grid-column: 1 / -1; object-position: center; }
+    .product-info { padding: 12px 10px; }
+    .product-kicker { color: var(--accent); font-size: 11px; letter-spacing: 1.5px; font-weight: 850; }
+    .product-info h3 { margin: 10px 0 0; font-size: clamp(28px, 4vw, 40px); letter-spacing: -1.5px; }
+    .product-subtitle { margin: 2px 0 18px; color: var(--muted); }
+    .product-price { font-size: 34px; font-weight: 900; letter-spacing: -1px; }
+    .product-price small { font-size: 15px; color: var(--muted); letter-spacing: 0; }
+    .product-description { color: var(--muted); line-height: 1.7; margin: 15px 0 20px; }
+    .product-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 17px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .product-specs div { display: flex; flex-direction: column; gap: 3px; }
+    .product-specs span { color: var(--muted); font-size: 12px; }
+    .product-specs strong { font-size: 13px; }
+    .product-note { margin: 18px 0; padding: 13px; border-radius: 13px; background: var(--panel-2); color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .order-button { width: 100%; }
+    .contact-hint { text-align: center; color: var(--muted); font-size: 12px; margin: 10px 0 0; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, 560px); }
+      header { height: 70px; }
+      .nav-links { display: none; }
+      .nav-cta { min-height: 40px; padding: 0 14px; font-size: 12px; }
+      .logo { font-size: 19px; }
+      .hero { padding: 55px 0 50px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+      h1 { font-size: clamp(44px, 13vw, 62px); letter-spacing: -2.8px; }
+      .lead { font-size: 16px; }
+      .visual { min-height: 310px; border-radius: 24px; }
+      .big-mark { width: 160px; height: 160px; border-radius: 40px; font-size: 58px; }
+      .visual::before { width: 245px; height: 245px; }
+      .visual::after { width: 320px; height: 320px; }
+      .floating.one { left: 12px; bottom: 35px; }
+      .floating.two { right: 12px; bottom: 80px; }
+      .section { padding-bottom: 58px; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 8px; }
+      .feature-grid { grid-template-columns: 1fr; gap: 12px; }
+      .product-card { grid-template-columns: 1fr; padding: 14px; gap: 12px; }
+      .product-gallery { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .product-main { grid-column: 1 / -1; max-height: none; min-height: 0 !important; }
+      .product-secondary { grid-column: 1 / -1; max-height: none; min-height: 0 !important; }
+      .product-info { padding: 12px 4px 4px; }
+      .product-specs { gap: 10px; }
+      .feature { min-height: auto; padding: 21px; }
+      .coming { margin-bottom: 55px; padding: 27px 22px; display: block; }
+      .coming h2 { font-size: 25px; }
+      .tag { display: inline-block; margin-top: 18px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#" aria-label="Дроп24/7 — головна">
+        <span class="logo-mark">D</span><span>Дроп<span>24/7</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Головна навігація">
+        <a href="#about">Про магазин</a>
+        <a href="#advantages">Переваги</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#catalog">Запуск</a>
+      </nav>
+      <a class="nav-cta" href="#catalog">Переглянути каталог ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> ОНЛАЙН-МАГАЗИН</div>
+          <h1>Твій стиль.<br><em>Твій вибір.</em><br>24/7.</h1>
+          <p class="lead">Дроп24/7 — місце для цікавих знахідок, актуальних речей та товарів, які хочеться додати до свого життя.</p>
+          <div class="hero-actions">
+            <a class="button" href="#catalog">Твій магазин знахідок ↗</a>
+            <a class="text-link" href="#about">Дізнатися більше ↓</a>
+          </div>
+        </div>
+        <div class="visual" aria-label="Графічний знак бренду Дроп24/7">
+          <span class="orbit-label">DROP YOUR STYLE</span>
+          <div class="big-mark">D24</div>
+          <div class="floating one">✦ Нові знахідки</div>
+          <div class="floating two">ONLINE 24/7</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Більше, ніж просто магазин</h2>
+          <p>Обирай те, що тобі подобається.</p>
+        </div>
+        <div class="feature-grid" id="advantages">
+          <article class="feature">
+            <div class="icon">✦</div>
+            <h3>Цікаві товари</h3>
+            <p>Плануємо збирати в одному місці речі, які привертають увагу.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">↗</div>
+            <h3>Зручний вибір</h3>
+            <p>Зрозумілий каталог і простий шлях від перегляду до замовлення.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">♡</div>
+            <h3>Чесний підхід</h3>
+            <p>Актуальна інформація про товари, наявність та умови покупки.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="catalog">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Перша знахідка</h2>
+          <p>Товар під замовлення · деталі уточнюються</p>
+        </div>
+        <article class="product-card">
+          <div class="product-gallery">
+            <img class="product-main" src="assets/berghaus-front-back.jpg" alt="Куртка Berghaus GORE-TEX — вигляд спереду та ззаду" />
+            <img class="product-secondary" src="assets/berghaus-details.jpg" alt="Деталі куртки Berghaus GORE-TEX" />
+          </div>
+          <div class="product-info">
+            <span class="product-kicker">OUTDOOR / GORPCORE</span>
+            <h3>Berghaus GORE-TEX</h3>
+            <p class="product-subtitle">Оригінальна чоловіча куртка</p>
+            <div class="product-price">2 599 <small>грн</small></div>
+            <p class="product-description">Стильна куртка британського бренду Berghaus із технологією GORE-TEX. Для міста, прогулянок та активного відпочинку.</p>
+            <div class="product-specs">
+              <div><span>Бренд</span><strong>Berghaus</strong></div>
+              <div><span>Технологія</span><strong>GORE-TEX</strong></div>
+              <div><span>Розмір</span><strong>M</strong></div>
+              <div><span>Колір</span><strong>Темно-зелений / сірий</strong></div>
+              <div><span>Стан</span><strong>Вживана</strong></div>
+            </div>
+            <div class="product-note">📦 Товар під замовлення. Наявність та можливість відправлення уточнюються перед оформленням.</div>
+            <a class="button order-button" href="https://t.me/Duf7484" target="_blank" rel="noopener noreferrer">Уточнити наявність ↗</a>
+            <p class="contact-hint">Напишіть нам у Telegram: @Duf7484</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap coming" id="soon">
+      <div>
+        <h2>Знаходь свої нові улюблені речі</h2>
+        <p>Обирай цікаві речі для свого стилю та щоденного життя.</p>
+      </div>
+      <span class="tag">ПРАЦЮЄМО ДЛЯ ТЕБЕ · 24/7</span>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>Дроп24/7</strong> — твій вибір щодня.</div>
+      <div>© <span id="year"></span> Дроп24/7. Усі права захищені.</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
